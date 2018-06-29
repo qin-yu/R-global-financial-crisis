@@ -5,18 +5,25 @@ library("corrgram")
 ###################################################################################
 ###### Reading and preparing data from csv file downloaded from Wharton:
 
-dataraw<-read.csv("data/JPM WFC BAC C GS MS INTC SI IBM AAPL COF CSIQ FE 01Jan2007 - 31Dec2010.csv")
+dataraw<-read.csv("data/JPM WFC BAC C GS USB COF AXP INTC SI IBM MSFT BHGE FE XOM AEIS.csv")
 names(dataraw) 
 ids<-unique(dataraw[,1])
+tks<-unique(dataraw[,3])
 nAssets<-length(ids)
 nObs<-nrow(dataraw)/nAssets
+
+### check which stock is wrong:
+for (tik in ids) {
+  print(c(tik, length(dataraw[dataraw[,1] == tik, 2])))
+}
+
 data<-matrix(NA,nObs,nAssets+1)
 data[,1]<-dataraw[dataraw[,1]==ids[1],2]  # array[condition, no.]
 for (i in 1:nAssets){
   data[,i+1]<-dataraw[dataraw[,1]==ids[i],3]
 }
 time<-as.Date(as.character(data[,1]),"%Y%m%d")
-ticker<-c("IBM", "AAPL", "FE", "WFC", "JPM", "INTC", "BAC", "MS", "C", "COF", "GS", "SI", "CSIQ")
+ticker<-c() ######### here to be updated
 colnames(data)[2:(nAssets+1)]<-ticker
 
 ###################################################################################
@@ -53,5 +60,6 @@ pairs(X)
 
 Y = data.frame(X)
 corrgram(Y)
+
 
 graphics.off()
