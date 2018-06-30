@@ -46,10 +46,10 @@
   \raggedright
   \textbf{What Happened \\During the Global Financial Crisis?} \\
   \vspace{0.3em}
-  \large A brief report on the stock price ( financial, tech, energy) in the 2007-09 financial crisis \\
+  \large A brief report on the stock price (financial, tech, energy) in the 2007-09 financial crisis \\
   %\hspace*{\fill}
   \vspace{1em}
-  \textit{By} \textbf{Qin Yu}, Jun 2018, \LaTeX is my favourite.
+  \textit{By} \textbf{Qin Yu}, Jun 2018. 
 }
 \date{}
 \maketitle
@@ -66,7 +66,7 @@ To analyse the stock price data, statistically, during the Global Financial Cris
 \end{center}
 
 \section{Overview: the Dynamics}\vspace{-1em}
-From Figure 1, 2, 3 and 4, one observes the early tremors started around Febrary 2007. and June 2007 is when things really went wrong as we see clearly in both figures. Here is some key dates related to the graph:
+From Figure 1, 2, 3 and 4, one observes the early tremors started around Febrary 2007. and June 2007 is when things really went wrong as we see clearly in both figures. Here is some key dates and eventsrelated to the graph:
 \begin{description}\vspace{-1em}
 \item[Jun. 2008] There is a sign of an undesirable trend, and this is when the subprime mortgage crisis happened: ``Two Bear Stearns-run hedge funds with large holdings of subprime mortgages run into large losses and are forced to dump assets. The trouble spreads to major Wall Street firms such as Merrill Lynch, JPMorgan Chase(Fig.2.2 JPM), Citigroup and Goldman Sachs(Fig.2.7 GS) which had loaned the firms money''\cite{Guillen}.
 \item[22 Jan. 2008] The situation seems to be in control briefly as ``the Federal Reserve System (The Fed) stepped in''\cite{Jolly}.
@@ -89,16 +89,38 @@ From Figure 1, 2, 3 and 4, one observes the early tremors started around Febrary
 %\includepdf[scale=0.9, pages=-, landscape=true]{graph/Fig2StockPriceDynamics.pdf}
 
 \section{Analysis of Dependencies}\vspace{-1em}
+How are stocks correlated, from same sector and from different sectors respectively? In the following illustration, pies and shades are symmetric along the labelled diagonal. Percentages and sharpness of blue represents strength in (positive) correlations (since there is no negatively correlated stocks here which should be red if exist).
+\vspace{-2em}
+\begin{center}
+  \includegraphics[width=1\linewidth]{graph/PairWiseScatterPlotForAllPie.pdf}\vspace{-1em}
+  Fig.5 Pairwise Scatter Plot for Log Price of All 16 Stocks\\ 1-8 Financial, 9-12 Tech, 13-16 Energy
+\end{center}
 
+\subsection{Correlation Across Sectors}\vspace{-1em}
+For correlations across sectors we look at the top-right and bottom-left quarters, as well as that of the bottom-right quarter. Grids representing these correlations are blue but relatively bright and low in percentage, which, statistically, shows all the sectors are weakly correlated but still have positive influence. In English, these three sectors all had a bad time during the global financial crisis but had different levels and periods of losses.
+\begin{description}\vspace{-1em}
+\item[Financial vs Technology] moderate correlation
+\item[Technology vs Energy] moderate correlation
+\item[Energy vs Financial] weak correlation
+\end{description}
 
+\subsection{Correlation Within Sector}\vspace{-1em}
+The correlation between stocks in the same sector is very strong as indicated by the deep blue grids/high percentage pies around each sector. 
+\begin{description}\vspace{-1em}
+\item[Financial Sector] Inspecting the top-left quarter of Fig.5, i.e. the Financial sector, one can easily tell the \textbf{strong} link between financial stocks.
+\item[Technology Sector] The 10 grids for Technology sector are blue with \textbf{relatively strong} hue, suggesting good dependencies between companies in this industry.
+\item[Energy Sector] \textbf{Weak-to-modest} correlation is shown within Energy sector.
+\end{description}
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \vspace{-0.8em}
 \begin{thebibliography}{9}
 \bibitem{Wiki} Wikipedia contributors. ``Financial crisis of 2007–2008.'' Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia, 29 Jun. 2018. Web. 30 Jun. 2018.
 \bibitem{Guillen} Guillén, Mauro F. ``The global economic \& financial crisis: A timeline.'' The Lauder Institute, University of Pennsylvania (2009): 1-91.
-\bibitem{Jolly} Jolly, J. (2017). The financial crisis 10 years on: A timeline of the crash. [online] Cityam.com. Available at: http://www.cityam.com/269810/global-financial-crisis-10-years-timeline-global-events [Accessed 30 Jun. 2018].
+\bibitem{Jolly} Jolly, J. (2017). ``The financial crisis 10 years on: A timeline of the crash.'' [online] Cityam.com. Available at: http://www.cityam.com/269810/global-financial-crisis-10-years-timeline-global-events [Accessed 30 Jun. 2018].
 \end{thebibliography}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\LaTeX\ is my favourite.
 \end{document}
