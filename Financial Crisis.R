@@ -1,6 +1,8 @@
 rm(list=ls(all=TRUE))
+library("QRM")
 library("corrgram")
 library("colorspace")
+library("gridExtra")
 
 ### Loss Operator Function:
 lo.fn <- function(x,weights,value, linear=FALSE){
@@ -206,4 +208,38 @@ legend("topleft", legend = legendnames, col=1:2, pch="-")
 
 graphics.off()
 
+
+###################################################################################
+###### 3.2 Copula Fitting of Empirical Data
+
+Y <- X[, 1:8]
+Y <- Y[Y[,1]!=0 & Y[,2] !=0 & Y[,3] !=0 & Y[,4] !=0  & Y[,5] !=0 & Y[,6] !=0 & Y[,7] !=0 & Y[,8] !=0,]
+
+# Construct pseudo copula data
+copulaY <- apply(Y,2,edf,adjust=TRUE)
+pairs(copulaY)
+
+
+#mod.gumbel <- fit.AC(copulaY, "gumbel")  # Gumbel is only implemented for d = 2
+mod.clayton <- fit.AC(copulaY, "clayton")
+mod.gauss <- fit.gausscopula(copulaY)
+mod.tKendall <- fit.tcopula(copulaY, method = "Kendall")
+mod.tSpearman <- fit.tcopula(copulaY, method = "Spearman")
+mod.tAll <- fit.tcopula(copulaY, method = "all")
+
+fit.copulae <- as.matrix(c(mod.clayton$ll.max, 
+                           mod.gauss$ll.max, 
+                           mod.tKendall$ll.max,
+                           mod.tSpearman$ll.max,
+                           mod.tAll$ll.max
+                           ))
+rownames(fit.copulae) <- c("Clayton",
+                        "Gauss",
+                        "Kendall",
+                        "Spearman",
+                        "Student's t")
+colnames(fit.copulae) <- "Log Likelihood"
+print.table(fit.copulae)
+grid.table
+graphics.off()
 

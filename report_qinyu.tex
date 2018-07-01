@@ -93,7 +93,7 @@ From Figure 1, 2, 3 and 4, one observes the early tremors started around Febrary
 
 
 \section{Analysis of Dependencies}\vspace{-1em}
-How are stocks correlated, from same sector and from different sectors respectively? In the following illustration, pies and shades are symmetric along the labelled diagonal. Percentages and sharpness of blue represents strength in (positive) correlations (since there is no negatively correlated stocks here which should be red if exist).
+How are stocks correlated, from the same sector and different sectors respectively? In the following illustration, pies and shades are symmetric along the labelled diagonal. Percentages and sharpness of blue represent strength in (positive) correlations (since there are no negatively correlated stocks here which should be red if they exist). 
 \vspace{-2em}
 \begin{center}
   \includegraphics[width=1\linewidth]{graph/PairWiseScatterPlotForAllPie.pdf}\vspace{-1em}\\
@@ -109,7 +109,7 @@ For correlations across sectors we look at the top-right and bottom-left quarter
 \end{description}
 
 \subsection{Correlation Within Sector}\vspace{-1em}
-The correlation between stocks in the same sector is very strong as indicated by the deep blue grids/high percentage pies around each sector. 
+The correlation between stocks in the same sector is substantial as indicated by the deep blue grids/high percentage pies around each sector. 
 \begin{description}\vspace{-1em}
 \item[Financial Sector] Inspecting the top-left quarter of Fig.5, i.e. the Financial sector, one can easily tell the \textbf{strong} link between financial stocks.
 \item[Technology Sector] The 10 grids for Technology sector are blue with \textbf{relatively strong} hue, suggesting good dependencies between companies in this industry.
@@ -136,10 +136,10 @@ Suppose there is a portfolio which invests \$1000 in each of the stocks at $1^{s
 \end{figure}
 
 \vspace{-1em}\subsection{Quantile-quantile Plot}\vspace{-1em} 
-In this quantile-quantile plot (Fig.6.1) of daily returns of the portfolio, the inverted-S shape means that the empirical distribution has a heavier tail than the normal distribution, i.e. the data have more extreme values than would be expected if they truly came from a Normal distribution. However, the subsequent data for 2010 is more normal as we see in Fig.6.2. Also, Q-Q plot of 2010 against 2007-09 shows that data in 2010 has less extreme values. As a result, the model obtained form 2007-09 is not suitable for 2010 data.
+In this quantile-quantile plot (Fig.6.1) of daily returns of the portfolio, the inverted-S shape means that the empirical distribution has a heavier tail than the normal distribution, i.e. the data have more extreme values than what would be expected if they truly came from a Normal distribution. However, the subsequent data for 2010 is closer to normal as we see in Fig.6.2. Also, the Q-Q plot of 2010 against 2007-09 shows that data in 2010 has less extreme values. As a result, the model obtained from 2007-09 is not suitable for 2010 data.
 
 \vspace{-1em}\subsection{VaR and ES}\vspace{-1em}
-Fig.8, it is clear that 2010 data is more stable and has smaller VaR and ES. To examine this more closely:
+Comparing two distributions in Fig.7, it is clear that 2010 data is more stable and has smaller VaR and ES. To examine this more closely:
 \begin{align*} 
   &\text{VaR}_{0.95}(L_{2007/09})& &=& &637.9547& \\
   &\text{VaR}_{0.95}(L_{2010})& &=& &396.7451& \\
@@ -154,17 +154,29 @@ Fig.8, it is clear that 2010 data is more stable and has smaller VaR and ES. To 
 \end{subfigure}%
 \begin{subfigure}{0.5\textwidth}
   \centering
-  \includegraphics[width=1\linewidth]{graph/HistoricalSimulation2010sq.pdf}\\
+  \includegraphics[width=1\linewidth]{graph/HistoricalSimulation2010sq.pdf}
 \end{subfigure}
 \centering Fig.7 VaR and ES
 \end{figure}
 
 
 \section{Dependencies and Copulae}\vspace{-1em}
+\begin{center}
+  \includegraphics[width=1\linewidth]{graph/LogLikelihood.pdf}
+  Table.8 Log Likehoods for 5 copulae (Gumbel is only implemented for d = 2)
+\end{center}
+By computing the log likelihood for 5 copulae: Clayton, Gauss, Kendall, Spearman, and Student's t, we can see that the best fit copula is the Gauss Copula. Also, Fig.9 illustrates the relatively thin bands in the correlations plotted.
+\begin{center}\vspace{-1em}
+  \includegraphics[width=1\linewidth]{graph/CopulaY.pdf}
+  Fig.9 Scatter Plot of Copulae
+\end{center}
+
+
+\section{Conclusion}\vspace{-1em}
+During the Global Financial Crisis, the financial, technology and energy sectors all experienced destructive depression. They are all positively related to a high level, especially within the same industry. Diversification is still helpful in this situation but as the whole market fell apart there is no escape. Finally, the data obtained from previous periods is not helpful for determining possible trends.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
 \vspace{-0.8em}
 \begin{thebibliography}{9}
 \bibitem{Wiki} Wikipedia contributors. ``Financial crisis of 2007–2008.'' Wikipedia, The Free Encyclopedia. Wikipedia, The Free Encyclopedia, 29 Jun. 2018. Web. 30 Jun. 2018.
@@ -172,5 +184,4 @@ Fig.8, it is clear that 2010 data is more stable and has smaller VaR and ES. To 
 \bibitem{Jolly} Jolly, J. (2017). ``The financial crisis 10 years on: A timeline of the crash.'' [online] Cityam.com. Available at: http://www.cityam.com/269810/global-financial-crisis-10-years-timeline-global-events [Accessed 30 Jun. 2018].
 \end{thebibliography}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\LaTeX\ is my favourite.
 \end{document}
