@@ -59,11 +59,13 @@
 \hspace{10em}
 \parbox[position]{30em}{\textit{The financial crisis of 2007–2008, also known as the global financial crisis and the 2008 financial crisis, is considered by many economists to have been the worst financial crisis since the Great Depression of the 1930s.\cite{Wiki}}}
 
+
 \section{Introduction: the Data}\vspace{-1em}
 To analyse the stock price data, statistically, during the Global Financial Crisis, the auther used R on selected once including 8 stocks for the financial industry (and the average), 4 stocks for the technology industry, and 4 stocks for the energy industry, from $1^{st}$ July 2006 to $30^{th}$ june 2011 (but focus on $1^{st}$ Jan. 2007 to $31^{st}$ Dec 2010). With illustrations, we shall see from a mathematical and statistical point of view, what happend to these industries in the Global financial crisis.
 \begin{center}
 \includegraphics[width=1\linewidth]{graph/Fig1OverviewLogPricesOfAll16Stocks.pdf}
 \end{center}
+
 
 \section{Overview: the Dynamics}\vspace{-1em}
 From Figure 1, 2, 3 and 4, one observes the early tremors started around Febrary 2007. and June 2007 is when things really went wrong as we see clearly in both figures. Here is some key dates and eventsrelated to the graph:
@@ -88,11 +90,12 @@ From Figure 1, 2, 3 and 4, one observes the early tremors started around Febrary
 %\includepdf[scale=0.9, pages=-, landscape=true]{graph/Fig1OverviewLogPricesOfAll16Stocks.pdf}
 %\includepdf[scale=0.9, pages=-, landscape=true]{graph/Fig2StockPriceDynamics.pdf}
 
+
 \section{Analysis of Dependencies}\vspace{-1em}
 How are stocks correlated, from same sector and from different sectors respectively? In the following illustration, pies and shades are symmetric along the labelled diagonal. Percentages and sharpness of blue represents strength in (positive) correlations (since there is no negatively correlated stocks here which should be red if exist).
 \vspace{-2em}
 \begin{center}
-  \includegraphics[width=1\linewidth]{graph/PairWiseScatterPlotForAllPie.pdf}\vspace{-1em}
+  \includegraphics[width=1\linewidth]{graph/PairWiseScatterPlotForAllPie.pdf}\vspace{-1em}\\
   Fig.5 Pairwise Scatter Plot for Log Price of All 16 Stocks\\ 1-8 Financial, 9-12 Tech, 13-16 Energy
 \end{center}
 
@@ -112,6 +115,37 @@ The correlation between stocks in the same sector is very strong as indicated by
 \item[Energy Sector] \textbf{Weak-to-modest} correlation is shown within Energy sector.
 \end{description}
   
+
+\section{Testing Portfolio and Loss Distribution}\vspace{-1em} 
+\begin{center}
+  \includegraphics[width=0.85\linewidth]{graph/NormalQQPlot200709.pdf}\\
+  Fig.6 Normality Test (2007-09)
+\end{center}
+Suppose there is a portfolio which invests \$1000 in each of the stocks at $1^{st}$ Jan. 2007 with fixed composition, the empirical data results in Value-at-Risk (VaR) being 681.8904 and Expected Shortfall (ES) being 1107.771. Comparing it to a normal distribution (with VaR being 784.6308 and ES being 980.7411) and the empirical distribution of 2010, we have Fig.6, Fig.7 and Fig.8.
+
+\vspace{-1em}\subsection{Quantile-quantile Plot}\vspace{-1em} 
+In this quantile-quantile plot (Fig.6) of daily returns of the portfolio, the inverted-S shape means that the empirical distribution has a heavier tail than the normal distribution, i.e. the data have more extreme values than would be expected if they truly came from a Normal distribution.
+
+\vspace{-1em}\subsection{VaR and ES}\vspace{-1em}
+In Fig.7, the quantile-quantile plot of data from 2007-2009 and data from 2010 shows that the historical data is valid for future use. Also, in Fig.8, at the first glance, the empirical distribution obtained from 2007-2009 data is a reasonable tool for prediction of 2010. To examine this more closely:
+\begin{align*} 
+  &\text{VaR}_{0.95}(L_{2007/09})& &=& &681.8904& \\
+  &\text{VaR}_{0.95}(L_{2010})& &=& &703.5767& \\
+  &\text{VaR}_{0.95}(L_{2007/09}) - \text{VaR}_{0.95}(L_{2010})& &=&- &21.6863& \approx -3.13\%\\
+  &\text{ES}_{0.95}(L_{2007/09})& &=& &1107.771& \\
+  &\text{ES}_{0.95}(L_{2010})& &=& &1083.056& \\
+  &\text{ES}_{0.95}(L_{2007/09}) - \text{ES}_{0.95}(L_{2010})& &=& &24.715& \approx 2.26\%
+\end{align*}
+\vspace{-2.5em}
+\begin{center}
+  \includegraphics[width=0.85\linewidth]{graph/QQ200709against2010.pdf}\\
+\end{center}
+
+\begin{center}
+  \includegraphics[width=0.9\linewidth]{graph/HistoricalSimulation200709.pdf}
+  \includegraphics[width=0.9\linewidth]{graph/HistoricalSimulation2010.pdf}\\
+  Fig.8 VaR and ES
+\end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
