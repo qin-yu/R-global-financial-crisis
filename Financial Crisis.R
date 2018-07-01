@@ -150,12 +150,12 @@ long_end <- 1134  # ends on 2010-12-31
 short_end <- 882  # ends on 2009-12-31
 prev_start <- 127  # start on 2007-01-01
 next_start <- 883  # start on 2010-01-01
-this_start <- next_start
-this_end <- long_end
+this_start <- prev_start
+this_end <- short_end
 
 time <- time[this_start:this_end]
 T <- length(time)
-prices <- prices[(this_start - 2):(length(time) - 1),]  
+prices <- prices[(this_start - 2):(this_end - 1),]  
 # end - 1 because prices lost first row, 
 # start - 2 to get the first diff between years
 logprices <- log(prices)
@@ -189,15 +189,15 @@ hs.data.0709 <- as.matrix(read.csv(file = "Data/hs.data.0709"))
 hs.data.10 <- as.matrix(read.csv(file = "Data/hs.data.10"))
 dev.new()
 qqplot(hs.data.0709, hs.data.10, xlab = "historical data 2007-2009", ylab = "historical data 2010")
-title("Fig.7 QQ Test (2007-09 vs 2010)")
+title("QQ Test 2010 vs 2007-09")
 
-qqnorm(hs.data)
+qqnorm(hs.data, main = paste("Normal Q-Q Plot", time[1], "to", time[length(time)]))
 VaR.hs <- quantile(hs.data,p)
 ES.hs <- mean(hs.data[hs.data > VaR.hs])
 
 ### Plot results
-hist(hs.data, nclass=100, prob=TRUE, xlab="Loss Distribution",
-     col=diverge_hsv(90), xlim = range(-2500:2500),
+hist(hs.data, nclass=length(time)/10, prob=TRUE, xlab="Loss Distribution",
+     col=diverge_hsv(length(time)/8.5), xlim = range(-2500:2500),
      main = paste("Historical simulation", time[1], "to", time[length(time)]))
 abline(v=c(VaR.normal,ES.normal),col=1,lty=2);
 abline(v=c(VaR.hs,ES.hs),col=2,lty=2)

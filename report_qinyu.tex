@@ -15,6 +15,7 @@
 \usepackage{ulem}
 \usepackage{pdfpages}
 \usepackage{graphicx}
+\usepackage{subcaption}
 %%\usepackage{natbib}
 
 %%\setlength{\bibsep}{1pt}
@@ -116,36 +117,51 @@ The correlation between stocks in the same sector is very strong as indicated by
 \end{description}
   
 
-\section{Testing Portfolio and Loss Distribution}\vspace{-1em} 
-\begin{center}
-  \includegraphics[width=0.85\linewidth]{graph/NormalQQPlot200709.pdf}\\
-  Fig.6 Normality Test (2007-09)
-\end{center}
-Suppose there is a portfolio which invests \$1000 in each of the stocks at $1^{st}$ Jan. 2007 with fixed composition, the empirical data results in Value-at-Risk (VaR) being 681.8904 and Expected Shortfall (ES) being 1107.771. Comparing it to a normal distribution (with VaR being 784.6308 and ES being 980.7411) and the empirical distribution of 2010, we have Fig.6, Fig.7 and Fig.8.
+\section{Testing Portfolio and Loss Distribution}\vspace{-1em}
+Suppose there is a portfolio which invests \$1000 in each of the stocks at $1^{st}$ Jan. 2007 with fixed composition, the empirical data results in Value-at-Risk (VaR) being 637.9547 and Expected Shortfall (ES) being 1037.473. Comparing it to a normal distribution (with VaR being 726.7265 and ES being 910.1906) and the empirical distribution of 2010, we have Fig.6 and 7.
+\begin{figure}[h]
+\begin{subfigure}{0.33\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{graph/NormalQQPlot200709sq.pdf}
+\end{subfigure}%
+\begin{subfigure}{0.33\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{graph/NormalQQPlot2010sq.pdf}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{graph/QQ200709against2010sq.pdf}
+\end{subfigure}
+\centering Fig.6 Normality Test and Q-Q Plot
+\end{figure}
 
 \vspace{-1em}\subsection{Quantile-quantile Plot}\vspace{-1em} 
-In this quantile-quantile plot (Fig.6) of daily returns of the portfolio, the inverted-S shape means that the empirical distribution has a heavier tail than the normal distribution, i.e. the data have more extreme values than would be expected if they truly came from a Normal distribution.
+In this quantile-quantile plot (Fig.6.1) of daily returns of the portfolio, the inverted-S shape means that the empirical distribution has a heavier tail than the normal distribution, i.e. the data have more extreme values than would be expected if they truly came from a Normal distribution. However, the subsequent data for 2010 is more normal as we see in Fig.6.2. Also, Q-Q plot of 2010 against 2007-09 shows that data in 2010 has less extreme values. As a result, the model obtained form 2007-09 is not suitable for 2010 data.
 
 \vspace{-1em}\subsection{VaR and ES}\vspace{-1em}
-In Fig.7, the quantile-quantile plot of data from 2007-2009 and data from 2010 shows that the historical data is valid for future use. Also, in Fig.8, at the first glance, the empirical distribution obtained from 2007-2009 data is a reasonable tool for prediction of 2010. To examine this more closely:
+Fig.8, it is clear that 2010 data is more stable and has smaller VaR and ES. To examine this more closely:
 \begin{align*} 
-  &\text{VaR}_{0.95}(L_{2007/09})& &=& &681.8904& \\
-  &\text{VaR}_{0.95}(L_{2010})& &=& &703.5767& \\
-  &\text{VaR}_{0.95}(L_{2007/09}) - \text{VaR}_{0.95}(L_{2010})& &=&- &21.6863& \approx -3.13\%\\
-  &\text{ES}_{0.95}(L_{2007/09})& &=& &1107.771& \\
-  &\text{ES}_{0.95}(L_{2010})& &=& &1083.056& \\
-  &\text{ES}_{0.95}(L_{2007/09}) - \text{ES}_{0.95}(L_{2010})& &=& &24.715& \approx 2.26\%
+  &\text{VaR}_{0.95}(L_{2007/09})& &=& &637.9547& \\
+  &\text{VaR}_{0.95}(L_{2010})& &=& &396.7451& \\
+  &\text{ES}_{0.95}(L_{2007/09})& &=& &1037.473& \\
+  &\text{ES}_{0.95}(L_{2010})& &=& &534.4695& \\
 \end{align*}
 \vspace{-2.5em}
-\begin{center}
-  \includegraphics[width=0.85\linewidth]{graph/QQ200709against2010.pdf}\\
-\end{center}
+\begin{figure}[h]
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{graph/HistoricalSimulation200709sq.pdf}
+\end{subfigure}%
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{graph/HistoricalSimulation2010sq.pdf}\\
+\end{subfigure}
+\centering Fig.7 VaR and ES
+\end{figure}
 
-\begin{center}
-  \includegraphics[width=0.9\linewidth]{graph/HistoricalSimulation200709.pdf}
-  \includegraphics[width=0.9\linewidth]{graph/HistoricalSimulation2010.pdf}\\
-  Fig.8 VaR and ES
-\end{center}
+
+\section{Dependencies and Copulae}\vspace{-1em}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
