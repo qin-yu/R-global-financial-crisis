@@ -240,6 +240,7 @@ rownames(fit.copulae) <- c("Clayton",
                         "Student's t")
 colnames(fit.copulae) <- "Log Likelihood"
 print.table(fit.copulae)
-grid.table
+grid.table(t(signif(fit.copulae, digits = 6)))
+
 graphics.off()
 
