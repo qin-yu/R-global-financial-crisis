@@ -1,4 +1,8 @@
-# Global Financial Crisis 2007/09
+# Statistical Analysis of Global Financial Crisis 2007/09
+by **Qin Yu**, Jun 2018  
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/qin-yu/ml-julia-boston-housing/blob/master/LICENSE)
+[![R](https://img.shields.io/badge/R-v3.5.1-blue.svg)](https://julialang.org/blog/2018/08/one-point-zero)
 
 To analyse the stock price data, statistically, during the Global Financial Crisis, the auther
 used R on selected once including 8 stocks for the financial industry (and the average), 4
@@ -9,11 +13,20 @@ the Global financial crisis.
 
 ## Selected Graphs
 
-### Pairwise Scatter
-![PairWiseScatterPlotForAllPie](Graph/PairWiseScatterPlotForAllPie.png "Pair Wise Scatter for All")
+### Historical Simulation & Quantile-Quantile
+<p align="center">
+  <img src="Graph/HistoricalSimulation200709sq.png" width="49%">
+  <img src="Graph/NormalQQPlot200709sq.png" width="49%">
+</p>
 
-### Historical Simulation
-![HistoricalSimulation200709sq](Graph/HistoricalSimulation200709sq.png "Historical Simulation 2007-09")
+### Pairwise Scatter & Copula
+<p align="center">
+  <img src="Graph/PairWiseScatterPlotForAllPie.png" width="49%">
+  <img src="Graph/CopulaY.png" width="49%">
+  
+</p>
 
-### Quantile-Quantile
-![NormalQQPlot200709sq](Graph/NormalQQPlot200709sq.png "Normal QQ Plot 2007-09")
+### Stock Prices
+<p align="center">
+  <img src="Graph/FinancialStockPrice.png" width="98.5%">
+</p>
